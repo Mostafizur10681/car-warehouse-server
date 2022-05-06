@@ -41,6 +41,14 @@ async function run() {
             const result = await inventoryCollecttion.insertOne(newInventory);
             res.send(result)
         })
+
+        // delete one inventory
+        app.delete('/inventory/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await inventoryCollecttion.deleteOne(query);
+            res.send(result)
+        })
     }
     finally {
 
